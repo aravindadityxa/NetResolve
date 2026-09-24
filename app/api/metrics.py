@@ -29,10 +29,10 @@ async def get_metrics():
 
         total_incidents = db.query(Incident).count()
         active_incidents = db.query(Incident).filter(
-            Incident.status.in_(["open", "correlated", "active"])
+            Incident.state.in_(["open", "correlated", "active"])
         ).count()
         resolved_incidents = db.query(Incident).filter(
-            Incident.status == "resolved"
+            Incident.state == "resolved"
         ).count()
 
         db.close()

@@ -16,7 +16,6 @@ router = APIRouter(tags=["Devices"])
 @router.get("/devices", response_model=List[DeviceResponse])
 async def list_devices(
     status: str = Query(None, description="Filter by device status"),
-    region: str = Query(None, description="Filter by region"),
 ):
     """List all devices."""
     try:
@@ -25,8 +24,6 @@ async def list_devices(
 
         if status:
             query = query.filter(Device.status == status)
-        if region:
-            query = query.filter(Device.region == region)
 
         devices = query.all()
         db.close()

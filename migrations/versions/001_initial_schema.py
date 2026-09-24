@@ -150,7 +150,7 @@ def upgrade() -> None:
         sa.Column("mttd", sa.Float()),
         sa.Column("mtti", sa.Float()),
         sa.Column("mttr", sa.Float()),
-        sa.Column("metadata", sa.JSON()),
+        sa.Column("extra_metadata", sa.JSON()),
         sa.ForeignKeyConstraint(["root_cause_device_id"], ["devices.id"], ),
         sa.ForeignKeyConstraint(["root_cause_alarm_id"], ["alarms.id"], ),
         sa.PrimaryKeyConstraint("id"),

@@ -40,7 +40,10 @@ class Incident(Base):
     rca_reasoning = Column(Text)
     blast_radius = Column(Integer, default=0)
     suppression_count = Column(Integer, default=0)
-    metadata = Column(JSON)
+    mttd = Column(Float)  # Mean time to detect
+    mtti = Column(Float)  # Mean time to identify root cause
+    mttr = Column(Float)  # Mean time to resolve
+    extra_metadata = Column(JSON)
 
     # Relationships
     root_cause_device = relationship("Device")

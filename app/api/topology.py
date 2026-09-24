@@ -26,7 +26,6 @@ async def get_topology() -> Dict[str, Any]:
                 "name": d.name,
                 "type": d.device_type,
                 "status": d.status,
-                "region": d.region,
             }
             for d in devices
         ]

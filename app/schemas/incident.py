@@ -45,7 +45,7 @@ class IncidentSchema(BaseModel):
     mttd: Optional[float] = Field(None, description="Mean time to detect in seconds")
     mtti: Optional[float] = Field(None, description="Mean time to identify root cause in seconds")
     mttr: Optional[float] = Field(None, description="Mean time to resolve in seconds")
-    metadata: Optional[Dict[str, Any]] = Field(None, description="Additional metadata")
+    extra_metadata: Optional[Dict[str, Any]] = Field(None, description="Additional metadata")
 
     class Config:
         from_attributes = True

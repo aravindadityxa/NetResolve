@@ -6,6 +6,7 @@ from datetime import datetime
 
 from app.core.logging import logger
 from app.core.database import SessionLocal
+from app.core.constants import IncidentState
 from app.models.incident import Incident, TimelineEvent
 from app.models.alarm import Alarm
 from app.schemas.incident import IncidentSchema, IncidentDetailSchema
@@ -16,7 +17,7 @@ router = APIRouter(tags=["Incidents"])
 
 @router.get("/incidents", response_model=List[IncidentSchema])
 async def list_incidents(
-    status: str = Query(None, description="Filter by status"),
+    state: str = Query(None, description="Filter by state"),
     severity: str = Query(None, description="Filter by severity"),
     limit: int = Query(100, ge=1, le=1000),
     offset: int = Query(0, ge=0),
@@ -26,8 +27,8 @@ async def list_incidents(
         db = SessionLocal()
         query = db.query(Incident)
 
-        if status:
-            query = query.filter(Incident.status == status)
+        if state:
+            query = query.filter(Incident.state == state)
         if severity:
             query = query.filter(Incident.severity == severity)
 
@@ -162,7 +163,7 @@ async def resolve_incident(incident_id: str):
             db.close()
             raise HTTPException(status_code=404, detail="Incident not found")
 
-        incident.status = "resolved"
+        incident.state = IncidentState.RESOLVED
         incident.updated_at = datetime.utcnow()
         db.commit()
         db.close()

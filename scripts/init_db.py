@@ -78,48 +78,6 @@ def create_sample_topology():
             ip_address="10.1.3.1",
             description="Access switch 4",
         ),
-        Device(
-            id=str(uuid.uuid4()),
-            hostname="DIST-R1",
-            device_type=DeviceType.DISTRIBUTION_ROUTER,
-            ip_address="10.0.1.1",
-            description="Distribution router 1",
-        ),
-        Device(
-            id=str(uuid.uuid4()),
-            hostname="DIST-R2",
-            device_type=DeviceType.DISTRIBUTION_ROUTER,
-            ip_address="10.0.2.1",
-            description="Distribution router 2",
-        ),
-        Device(
-            id=str(uuid.uuid4()),
-            hostname="ACCESS-SW1",
-            device_type=DeviceType.ACCESS_SWITCH,
-            ip_address="10.1.0.1",
-            description="Access switch 1",
-        ),
-        Device(
-            id=str(uuid.uuid4()),
-            hostname="ACCESS-SW2",
-            device_type=DeviceType.ACCESS_SWITCH,
-            ip_address="10.1.1.1",
-            description="Access switch 2",
-        ),
-        Device(
-            id=str(uuid.uuid4()),
-            hostname="ACCESS-SW3",
-            device_type=DeviceType.ACCESS_SWITCH,
-            ip_address="10.1.2.1",
-            description="Access switch 3",
-        ),
-        Device(
-            id=str(uuid.uuid4()),
-            hostname="ACCESS-SW4",
-            device_type=DeviceType.ACCESS_SWITCH,
-            ip_address="10.1.3.1",
-            description="Access switch 4",
-        ),
     ]
 
     for device in devices:
